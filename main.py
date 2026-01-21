@@ -7,7 +7,9 @@ from datetime import datetime, timezone
 import time
 
 # Скачиваем бОльшую часть Владивостока
+print("Загрузка графа")
 Vladivostok = ox.graph.graph_from_bbox([131.84040, 43.07165, 132.00176, 43.13958], network_type='drive')
+print("Граф города готов к использованию")
 
 
 cost_per_meter = 1/10
