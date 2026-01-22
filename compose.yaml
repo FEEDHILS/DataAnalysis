@@ -14,7 +14,7 @@ services:
     environment:
       POSTGRES_USER: ${PG_USER}
       POSTGRES_PASSWORD: ${PG_PASS}
-      POSTGRES_DB: Taxi
+      POSTGRES_DB: ${PG_NAME}
     volumes:
       - ./db/:/var/lib/postgresql/
       - ./initdb/:/docker-entrypoint-initdb.d/
