@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: TaxiDB
+    restart: always
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASS}
+      POSTGRES_DB: Taxi
+    volumes:
+      - ./db/:/var/lib/postgresql/
+      - ./initdb/:/docker-entrypoint-initdb.d/
+
+    ports:
+      - "5432:5432"

@@ -33,9 +33,7 @@ def Generate_data():
     rating = int( np.clip(random.gauss(4.3, 1), 0, 5) ) # большая часть рейтинга около 4
     return time, from_node, to_node, int(route_len), int(cost), rating
 
-
-
-while True:
-    data = Generate_data()
-    print(data)
-    time.sleep(2)
+# while True:
+    # data = Generate_data()
+    # print(data)
+    # time.sleep(2)
