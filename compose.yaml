@@ -2,7 +2,7 @@ services:
   db:
     image: postgres:latest
     container_name: TaxiDB
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_USER: ${PG_USER}
       POSTGRES_PASSWORD: ${PG_PASS}
@@ -10,6 +10,15 @@ services:
     volumes:
       - ./db/:/var/lib/postgresql/
       - ./initdb/:/docker-entrypoint-initdb.d/
-
+    
     ports:
       - "5432:5432"
+  
+  python:
+    build: .
+    image: python-generator:latest
+    restart: on-failure:10
+    depends_on:
+      - db
+    env_file:
+      - .env

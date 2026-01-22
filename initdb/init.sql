@@ -1,6 +1,5 @@
 CREATE TABLE nodes (
-  id serial PRIMARY KEY,
-  osmid bigint,
+  id bigint PRIMARY KEY,
   long float,
   lat float
 );
@@ -8,15 +7,15 @@ CREATE TABLE nodes (
 CREATE TABLE orders (
   id serial PRIMARY KEY,
   date_time timestamp,
-  from_node integer REFERENCES nodes(id),
-  to_node integer REFERENCES nodes(id),
+  from_node bigint REFERENCES nodes(id),
+  to_node bigint REFERENCES nodes(id),
   distance float,
   cost int,
   rating int
 );  
 
 -- Заполняем ноды
-COPY nodes(osmid, long, lat)
+COPY nodes(id, long, lat)
 FROM '/docker-entrypoint-initdb.d/nodes.csv'
 DELIMITER ','
 CSV HEADER;

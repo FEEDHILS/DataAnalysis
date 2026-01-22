@@ -1,3 +1,6 @@
 osmnx
 numpy
 pandas
+python-dotenv
+psycopg2-binary
+sqlalchemy
